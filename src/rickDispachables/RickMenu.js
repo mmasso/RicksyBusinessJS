@@ -1,4 +1,4 @@
-function RickMenu(stock, cost) {
+function RickMenu(stock, price) {
     this.stock = stock;
     this.price = price;
 }
