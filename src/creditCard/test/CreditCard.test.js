@@ -10,3 +10,8 @@ beforeEach(() => {
 test('setupCard', () => {
     expect(this.creditCard).toBeTruthy;
 });
+
+test('constructorTest', () => {
+    expect(this.creditCard.owner).toBe("Abradolf Lincler");
+    expect(this.creditCard.number).toBe("4916119711304546");
+});
