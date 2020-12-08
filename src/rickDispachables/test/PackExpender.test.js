@@ -24,3 +24,9 @@ test('dispatchTestNoStock', () => {
     this.PackExpender.dispatch(this.creditCard)
     expect(this.PackExpender.stock).toBe(0);
 });
+
+test('dispatchTestNoCredit', () => {
+    this.PackExpender.price = 4000;
+    this.PackExpender.dispatch(this.creditCard)
+    expect(this.PackExpender.stock).toBe(100);
+});
