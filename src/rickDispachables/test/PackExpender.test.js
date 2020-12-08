@@ -13,3 +13,8 @@ test('setupExpender', () => {
 test('constructortest', () => {
     expect(this.PackExpender.stock).toBe(100);
 });
+
+test('dispatchTestOK', () => {
+    this.PackExpender.dispatch(this.creditCard)
+    expect(this.PackExpender.stock).toBe(99);
+});
