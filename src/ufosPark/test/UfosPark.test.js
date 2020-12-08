@@ -27,8 +27,14 @@ test('dispatchTest', () => {
     expect(creditCard.credit).toBe(2500);
 });
 
-test('dispatchTest', () => {
+test('dispatchNoCreditTest', () => {
     creditCard.pay(3000);
     ufosPark.dispatch(creditCard);
     expect(creditCard.credit).toBe(0);
+});
+
+test('dispatchUfoAlreadyReservedTest', () => {
+    ufosPark.dispatch(creditCard);
+    ufosPark.dispatch(creditCard);
+    expect(creditCard.credit).toBe(2500);
 });
