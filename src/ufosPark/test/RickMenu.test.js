@@ -18,11 +18,17 @@ test('setupUfosPark', () => {
 });
 
 test('addUfoTest', () => {
-    ufosPark.addUfo("cuatrox")
+    ufosPark.addUfo("cuatrox");
     expect(ufosPark.park.size).toBe(4);
 });
 
 test('dispatchTest', () => {
-    ufosPark.dispatch(creditCard)
+    ufosPark.dispatch(creditCard);
     expect(creditCard.credit).toBe(2500);
+});
+
+test('dispatchTest', () => {
+    creditCard.pay(3000);
+    ufosPark.dispatch(creditCard);
+    expect(creditCard.credit).toBe(0);
 });
