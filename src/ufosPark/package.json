@@ -1,0 +1,25 @@
+{
+    "name": "ufospark",
+    "version": "1.0.0",
+    "description": "parque de ufos donde se guardan por nombre y usuario",
+    "main": "UfosPark.js",
+    "directories": {
+        "test": "jest"
+    },
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mmasso/RicksyBusinessJS.git"
+    },
+    "keywords": [
+        "JS"
+    ],
+    "author": "Mateu Massó",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mmasso/RicksyBusinessJS/issues"
+    },
+    "homepage": "https://github.com/mmasso/RicksyBusinessJS#readme"
+}
