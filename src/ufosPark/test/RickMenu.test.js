@@ -21,3 +21,8 @@ test('addUfoTest', () => {
     ufosPark.addUfo("cuatrox")
     expect(ufosPark.park.size).toBe(4);
 });
+
+test('dispatchTest', () => {
+    ufosPark.dispatch(creditCard)
+    expect(creditCard.credit).toBe(2500);
+});
