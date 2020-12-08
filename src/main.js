@@ -27,7 +27,10 @@ const CreditCard = require('./creditCard/CreditCard.js');
 const UfosPark = require('./ufosPark/UfosPark.js');
 const PackExpender = require('./rickDispachables/PackExpender.js');
 const RickMenu = require('./rickDispachables/RickMenu.js');
-const Receptivo = require('./receptivo.js');
+const Receptivo = require('./Receptivo/receptivo.js');
+const packsJson = require('../db/data.json');
+const menuJson = require('../db/menus.json');
+const ufosJson = require('../db/ufos.json');
 
 
 /**
@@ -36,7 +39,7 @@ const Receptivo = require('./receptivo.js');
  * el crédito inicial es de 3000 EZIS
  */
 
-var abradolph = new CreditCard("Abradolph Lincler", "4916119711304546");
+const abradolph = new CreditCard("Abradolph Lincler", "4916119711304546");
 
 console.log("\n" + "Tarjeta de Abradolph" + "\n" +
     "====================");
@@ -52,11 +55,12 @@ console.log(abradolph);
  * El coste del ovni es de 500 EZIs.
  */
 
-var ufosPark = new UfosPark(500);
+const ufosPark = new UfosPark(500);
 
 // Da de alta en la flota de ovnis 2 UFOS.
+let ufos = ufosJson.ufos;
+let ufosID = [ufos[0].modelo, ufos[1].modelo];
 
-let ufosID = ["unx", "dox"];
 for (let ufo of ufosID) {
     ufosPark.addUfo(ufo);
 }
@@ -73,7 +77,7 @@ console.log(ufosPark.getUfoOf(abradolph.number));
 // Mostramos el credito de la tarjeta de Abradolph
 console.log("Credito de Abradolph: " + abradolph.credit);
 
-// La dualidad en Abradolph quiere reservar otro ovni.
+// La dualidad en Abradolph quiere reserconst otro ovni.
 // El sistema detecta que ya tiene uno 
 // e ignora la petición.
 
@@ -85,25 +89,24 @@ console.log("Ovni de Abradolph: " + ufosPark.getUfoOf(abradolph.number));
 
 // A GearHead le vacía la tarjeta el alien "Cámara Lenta" 
 // mientras le daba la chapa, justo antes de pagar el ovni.
-// Intenta reservarlo y el componente de reserva de ovnis
+// Intenta reserconstlo y el componente de reserva de ovnis
 // no le asigna ninguno.
 
 console.log("\nLLega GearHead!\n" +
     "===============");
-var gearHead = new CreditCard("Gearhead", "8888888888888888");
+const gearHead = new CreditCard("Gearhead", "8888888888888888");
 
 gearHead.pay(3000); // le vacían la cartera
-
 ufosPark.dispatch(gearHead);
 console.log("Su credito es cero: " + gearHead.credit);
-console.log("No puede reservar ovni: " + ufosPark.getUfoOf(gearHead.number));
+console.log("No puede reserconst ovni: " + ufosPark.getUfoOf(gearHead.number));
 
 // Squanchy deja su ovni reservado
 // antes de irse a squanchear
 
 console.log("\nLLega Squanchy!\n" +
     "==============");
-var squanchy = new CreditCard("Squanchy", "4444444444444444");
+const squanchy = new CreditCard("Squanchy", "4444444444444444");
 ufosPark.dispatch(squanchy);
 console.log("Su credito es: " + squanchy.credit);
 console.log("Su ovni es: " + ufosPark.getUfoOf(squanchy.number));
@@ -113,7 +116,7 @@ console.log("Su ovni es: " + ufosPark.getUfoOf(squanchy.number));
 
 console.log("\nAlgun ovni para Morty?\n" +
     "======================");
-var morty = new CreditCard("Morty", "0000000000000000");
+const morty = new CreditCard("Morty", "0000000000000000");
 ufosPark.dispatch(morty);
 console.log("Su credito no ha cambiado: " + morty.credit);
 console.log("No hay ovni Morty: " + ufosPark.getUfoOf(morty.number));
@@ -123,7 +126,7 @@ console.log("No hay ovni Morty: " + ufosPark.getUfoOf(morty.number));
 
 console.log("\nFlota de ovnis\n" +
     "==============");
-ufosPark.addUfo("trex");
+ufosPark.addUfo(ufos[2].modelo);
 console.log(ufosPark);
 
 
@@ -133,7 +136,8 @@ console.log(ufosPark);
  * uno de ellos, que es de 50 EZIs
  */
 
-var packExpender = new PackExpender(3, 50);
+
+const packExpender = new PackExpender(packsJson[0].precio, packsJson[0].stock);
 
 // Muestra el total de packs y su precio unidad
 console.log("\nPacks\n" +
@@ -168,7 +172,7 @@ console.log("Credito de GearHead: " + gearHead.credit);
  * y CrystalDispatcher al receptivo
  */
 
-var receptivo = new Receptivo();
+const receptivo = new Receptivo();
 receptivo.registra(packExpender);
 receptivo.registra(ufosPark);
 
@@ -196,7 +200,7 @@ console.log(gearHead, packExpender, ufosPark);
 
 console.log("\nLLega Birdpearson!\n" +
     "==================");
-var birdpearson = new CreditCard("Birdpearson", "1111111111111111");
+const birdpearson = new CreditCard("Birdpearson", "1111111111111111");
 receptivo.dispatch(birdpearson);
 console.log(birdpearson, packExpender, ufosPark);
 
@@ -224,11 +228,11 @@ console.log(morty, packExpender, ufosPark);
 
 // tu código aquí
 
-var rickMenu = new RickMenu(100, 10);
+const rickMenu = new RickMenu(menuJson.Mexico.menu3.stck, menuJson.Mexico.menu3.price);
 
 receptivo.registra(rickMenu);
 
-var cards = [abradolph, squanchy, morty, gearHead, birdpearson];
+const cards = [abradolph, squanchy, morty, gearHead, birdpearson];
 
 for (let card of cards) {
     receptivo.dispatch(card);
