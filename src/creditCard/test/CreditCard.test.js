@@ -20,3 +20,8 @@ test('payTestOK', () => {
     this.creditCard.pay(3000);
     expect(this.creditCard.credit).toBe(0);
 });
+
+test('payTestNotOKtooMuch', () => {
+    this.creditCard.pay(4000);
+    expect(this.creditCard.credit).toBe(3000);
+});
