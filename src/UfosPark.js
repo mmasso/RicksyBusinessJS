@@ -1,6 +1,6 @@
-function UfosPark(fee) {
+function UfosPark(price) {
     this.park = new Map();
-    this.fee = fee;
+    this.price = price;
 }
 
 //Añadir un ufo
@@ -12,8 +12,8 @@ UfosPark.prototype.addUfo = function(ufo) {
 //Despachar un ufo
 UfosPark.prototype.dispatch = function(creditCard) {
     for (let [ufoName, user] of this.park.entries()) {
-        if (user == null && this.isUfoTakenBy(creditCard) && creditCard.pay(this.price)) {
-            this.park.set(ufoName, creditCard.number)
+        if (user == null && !(this.isUfoTakenBy(creditCard)) && creditCard.pay(this.price)) {
+            this.park.set(ufoName, creditCard.number);
         }
     }
 }
@@ -23,9 +23,12 @@ UfosPark.prototype.isUfoTakenBy = function(creditCard) {
     return Array.from(this.park.values()).includes(creditCard.number);
 }
 
-//Find the Ufo of a guest
+//Coge el ufo del cliente
 UfosPark.prototype.getUfoOf = function(owner) {
-    return Object.keys(this.park).find(key => map[key] === owner);
+    for (let [ufoName, user] of this.park.entries()) {
+        if (user === owner)
+            return ufoName;
+    }
 }
 
 module.exports = UfosPark;
