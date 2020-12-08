@@ -1,0 +1,25 @@
+{
+    "name": "ricksybusinessjs",
+    "version": "1.0.0",
+    "description": "Proyecto para DAW DUAL Entorno Cliente",
+    "main": "src/main.js",
+    "directories": {
+        "test": "jest"
+    },
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mmasso/RicksyBusinessJS.git"
+    },
+    "keywords": [
+        "JS"
+    ],
+    "author": "Mateu Massó",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mmasso/RicksyBusinessJS/issues"
+    },
+    "homepage": "https://github.com/mmasso/RicksyBusinessJS#readme"
+}
