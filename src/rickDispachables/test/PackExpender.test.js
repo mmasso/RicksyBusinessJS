@@ -9,3 +9,7 @@ beforeEach(() => {
 test('setupExpender', () => {
     expect(this.PackExpender).toBeTruthy;
 });
+
+test('constructortest', () => {
+    expect(this.PackExpender.stock).toBe(100);
+});
