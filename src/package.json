@@ -2,12 +2,13 @@
     "name": "ricksybusinessjs",
     "version": "1.0.0",
     "description": "Proyecto para DAW DUAL Entorno Cliente",
-    "main": "src/main.js",
+    "main": "main.js",
     "directories": {
         "test": "jest"
     },
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "start": "node main"
     },
     "repository": {
         "type": "git",
