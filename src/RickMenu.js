@@ -10,7 +10,7 @@ RickMenu.prototype.dispatch = function(creditCard) {
     }
 }
 
-PackExpender.prototype.isDispatchable = function() {
+RickMenu.prototype.isDispatchable = function() {
     //check stock
     return this.stock > 0
 }
