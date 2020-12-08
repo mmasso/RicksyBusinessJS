@@ -2,7 +2,7 @@ function Receptivo() {
     this.receptivos = new Set();
 }
 
-Receptivo.prototype.register = function(receptivo) {
+Receptivo.prototype.registra = function(receptivo) {
     this.receptivos.add(receptivo);
 }
 

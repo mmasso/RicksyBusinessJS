@@ -27,6 +27,7 @@ const CreditCard = require('./creditCard/CreditCard.js');
 const UfosPark = require('./ufosPark/UfosPark.js');
 const PackExpender = require('./rickDispachables/PackExpender.js');
 const RickMenu = require('./rickDispachables/RickMenu.js');
+const Receptivo = require('./receptivo.js');
 
 
 /**
@@ -167,9 +168,9 @@ console.log("Credito de GearHead: " + gearHead.credit);
  * y CrystalDispatcher al receptivo
  */
 
-//Receptivo receptivo = new Receptivo();
-//receptivo.registra(packExpender);
-//receptivo.registra(ufosPark);
+var receptivo = new Receptivo();
+receptivo.registra(packExpender);
+receptivo.registra(ufosPark);
 
 // Implementa el metodo receptivo.dispatch()
 // para que invoque a UfosPark.dispatch()
@@ -177,35 +178,34 @@ console.log("Credito de GearHead: " + gearHead.credit);
 
 // Squanchy reserva ovni (ya tiene) y pack
 
-//console.log("\nLLega Squanchy!\n" +
-//    "===============");
-//receptivo.dispatch(squanchy);
-//mostrarReserva(squanchy, packExpender, ufosPark);
+console.log("\nLLega Squanchy!\n" +
+    "===============");
+receptivo.dispatch(squanchy);
+console.log(squanchy, packExpender, ufosPark);
 
 // Gearhead reserva ovni y pack.
 // No tiene crédito.
 
-//console.log("\nLLega GearHead!\n" +
-//    "===============");
-////gearHead.pay(3000); // no tiene crédito
-//receptivo.dispatch(gearHead);
-//mostrarReserva(gearHead, packExpender, ufosPark);
+console.log("\nLLega GearHead!\n" +
+    "===============");
+gearHead.pay(3000); // no tiene crédito
+receptivo.dispatch(gearHead);
+console.log(gearHead, packExpender, ufosPark);
 
 // Birdpearson es recibido en la fiesta
 
-//console.log("\nLLega Birdpearson!\n" +
-//    "==================");
-//CreditCard birdpearson = new CreditCard("Birdpearson", "1111111111111111");
-//receptivo.dispatch(birdpearson);
-//mostrarReserva(birdpearson, packExpender, ufosPark);
+console.log("\nLLega Birdpearson!\n" +
+    "==================");
+var birdpearson = new CreditCard("Birdpearson", "1111111111111111");
+receptivo.dispatch(birdpearson);
+console.log(birdpearson, packExpender, ufosPark);
 
 // Morty intenta reserver un ovni y un pack pero no quedan
 
-//console.log("\nMorty quiere pack y ovni pero no quedan :(\n" +
-//    "==========================================");
-//morty = new CreditCard("Morty", "0000000000000000");
-//receptivo.dispatch(morty);
-//mostrarReserva(morty, packExpender, ufosPark);
+console.log("\nMorty quiere pack y ovni pero no quedan :(\n" +
+    "==========================================");
+receptivo.dispatch(morty);
+console.log(morty, packExpender, ufosPark);
 
 
 /**
@@ -226,12 +226,12 @@ console.log("Credito de GearHead: " + gearHead.credit);
 
 var rickMenu = new RickMenu(100, 10);
 
-//receptivo.registra(rickMenu);
+receptivo.registra(rickMenu);
 
-var cards = [abradolph, squanchy, morty, gearHead];
+var cards = [abradolph, squanchy, morty, gearHead, birdpearson];
 
 for (let card of cards) {
-    rickMenu.dispatch(card);
+    receptivo.dispatch(card);
 }
 
 console.log("\nPedidos de RickMenus:\n" +
