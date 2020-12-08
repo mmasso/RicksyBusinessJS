@@ -23,10 +23,10 @@
  * en la tarjeta del invitado/a el coste de ambos servicios. 
  */
 
-const CreditCard = require('./CreditCard.js');
-const UfosPark = require('./UfosPark.js');
-const PackExpender = require('./PackExpender.js');
-const RickMenu = require('./RickMenu.js');
+const CreditCard = require('./creditCard/CreditCard.js');
+const UfosPark = require('./ufosPark/UfosPark.js');
+const PackExpender = require('./rickDispachables/PackExpender.js');
+const RickMenu = require('./rickDispachables/RickMenu.js');
 
 
 /**

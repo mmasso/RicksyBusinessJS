@@ -1,6 +1,6 @@
-function RickMenu(stock, cost) {
+function RickMenu(stock, price) {
     this.stock = stock;
-    this.cost = cost;
+    this.price = price;
 }
 
 RickMenu.prototype.dispatch = function(creditCard) {
