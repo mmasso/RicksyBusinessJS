@@ -38,3 +38,14 @@ test('dispatchUfoAlreadyReservedTest', () => {
     ufosPark.dispatch(creditCard);
     expect(creditCard.credit).toBe(2500);
 });
+
+test('dispatchNoUfoAvaliableTest', () => {
+    ufosPark.dispatch(creditCard);
+    let squanchy = new CreditCard("Squanchy", "4444444444444444");
+    ufosPark.dispatch(squanchy);
+    let birdpearson = new CreditCard("Birdpearson", "1111111111111111");
+    ufosPark.dispatch(birdpearson)
+    let morty = new CreditCard("Morty", "0000000000000000");
+    ufosPark.dispatch(morty)
+    expect(morty.credit).toBe(3000);
+});
