@@ -49,3 +49,8 @@ test('dispatchNoUfoAvaliableTest', () => {
     ufosPark.dispatch(morty)
     expect(morty.credit).toBe(3000);
 });
+
+test('getUfoOfTest', () => {
+    ufosPark.dispatch(creditCard);
+    expect(ufosPark.getUfoOf(creditCard.number)).toBe("unx");
+});
