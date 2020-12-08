@@ -14,5 +14,10 @@ beforeEach(() => {
 });
 
 test('setupUfosPark', () => {
-    expect(this.UfosPark).toBeTruthy;
+    expect(this.ufosPark).toBeTruthy;
+});
+
+test('addUfoTest', () => {
+    ufosPark.addUfo("cuatrox")
+    expect(ufosPark.park.size).toBe(4);
 });
