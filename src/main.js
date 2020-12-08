@@ -27,7 +27,10 @@ const CreditCard = require('./creditCard/CreditCard.js');
 const UfosPark = require('./ufosPark/UfosPark.js');
 const PackExpender = require('./rickDispachables/PackExpender.js');
 const RickMenu = require('./rickDispachables/RickMenu.js');
-const Receptivo = require('./receptivo.js');
+const Receptivo = require('./Receptivo/receptivo.js');
+const packsJson = require('../db/data.json');
+const menuJson = require('../db/menus.json');
+const ufosJson = require('../db/ufos.json');
 
 
 /**
@@ -55,8 +58,9 @@ console.log(abradolph);
 var ufosPark = new UfosPark(500);
 
 // Da de alta en la flota de ovnis 2 UFOS.
+let ufos = ufosJson.ufos;
+let ufosID = [ufos[0].modelo, ufos[1].modelo];
 
-let ufosID = ["unx", "dox"];
 for (let ufo of ufosID) {
     ufosPark.addUfo(ufo);
 }
@@ -93,7 +97,6 @@ console.log("\nLLega GearHead!\n" +
 var gearHead = new CreditCard("Gearhead", "8888888888888888");
 
 gearHead.pay(3000); // le vacían la cartera
-
 ufosPark.dispatch(gearHead);
 console.log("Su credito es cero: " + gearHead.credit);
 console.log("No puede reservar ovni: " + ufosPark.getUfoOf(gearHead.number));
@@ -123,7 +126,7 @@ console.log("No hay ovni Morty: " + ufosPark.getUfoOf(morty.number));
 
 console.log("\nFlota de ovnis\n" +
     "==============");
-ufosPark.addUfo("trex");
+ufosPark.addUfo(ufos[2].modelo);
 console.log(ufosPark);
 
 
@@ -133,7 +136,8 @@ console.log(ufosPark);
  * uno de ellos, que es de 50 EZIs
  */
 
-var packExpender = new PackExpender(3, 50);
+
+var packExpender = new PackExpender(packsJson[0].precio, packsJson[0].stock);
 
 // Muestra el total de packs y su precio unidad
 console.log("\nPacks\n" +
@@ -224,7 +228,7 @@ console.log(morty, packExpender, ufosPark);
 
 // tu código aquí
 
-var rickMenu = new RickMenu(100, 10);
+var rickMenu = new RickMenu(menuJson.Mexico.menu3.stck, menuJson.Mexico.menu3.price);
 
 receptivo.registra(rickMenu);
 
