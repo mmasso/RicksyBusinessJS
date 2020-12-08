@@ -20,12 +20,12 @@ UfosPark.prototype.dispatch = function(creditCard) {
 
 //Check si algun ufo ya esta cogido por el demandante
 UfosPark.prototype.isUfoTakenBy = function(creditCard) {
-    return this.park.values().includes(creditCard.number);
+    return Array.from(this.park.values()).includes(creditCard.number);
 }
 
 //Find the Ufo of a guest
 UfosPark.prototype.getUfoOf = function(owner) {
-    return Object.keys(map).find(key => map[key] === owner);
+    return Object.keys(this.park).find(key => map[key] === owner);
 }
 
 module.exports = UfosPark;
